@@ -77,6 +77,9 @@ public:
     }
 };
 
+// Definition of static data member
+int MyClass::staticVar;
+
 int main() {
     MyClass::staticFunc(); // Calling static member function using class name
     return 0;

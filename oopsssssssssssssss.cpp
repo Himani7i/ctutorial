@@ -105,7 +105,7 @@ using namespace std;
 class employee
 {
     int id;
-    static int count;
+    static int count;//static data member
     public:
     void setdata(void)
     {
@@ -117,19 +117,19 @@ class employee
     {
         cout<<"The id of this employee is "<<id<<" and this employee number is:"<<count<<endl;
     }
-    static void getcount(void)
+    static void getcount(void)//static member function
     {
-        cout<<"The value of count is:"<<count<<endl;
+        cout<<"The value of count is:"<<count<<endl;//returns a static member
     }
 
 };
-int employee :: count;
+int employee :: count;// a static keyword
 int main()
 {
     employee samidha,mehak,himani;
     samidha.setdata();
     samidha.getdata();
-    employee::getcount();
+    employee::getcount();//static member function
 
     mehak.setdata();
     mehak.getdata();

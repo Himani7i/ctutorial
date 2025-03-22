@@ -112,8 +112,6 @@ if(temp->next == NULL){
     return;
 }
 
-
-
 Node* nodetoinsert= new Node(d);
 nodetoinsert->next=temp->next;
 temp->next->prev = nodetoinsert;
@@ -195,7 +193,7 @@ void insertBefore(Node* &head, int x, int y) {
     newNode->next = temp;
     newNode->prev = temp->prev;
 
-    if (temp->prev != nullptr) {
+    if(temp->prev != nullptr) {
         temp->prev->next = newNode;
     } else {
         // If temp is the head node

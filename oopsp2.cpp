@@ -6,66 +6,66 @@ using namespace std;
 
 
 //ques5
-// class lengthstr{
+class lengthstr{
 
-//     private:
-//     const char* str;
-//     public:
-//     //constructor
-//     lengthstr(const char* s){
-//         str = s;
-//     }
-//     //memberfunction
-//     int findlength(){
-//         int length = 0;
-//         while (str[length] != '\0'){
-//             length++;
-//         }
-//         return length;
-//     }
-// };
+    private:
+    const char* str;
+    public:
+    //constructor
+    lengthstr(const char* s){
+        str = s;
+    }
+    //memberfunction
+    int findlength(){
+        int length = 0;
+        while (str[length] != '\0'){
+            length++;
+        }
+        return length;
+    }
+};
 
-// int main(){
-//     const char* inputstring = "harshit";
-//     //creating class object
-//     lengthstr stringlen(inputstring);
+int main(){
+    const char* inputstring = "harshit";
+    //creating class object
+    lengthstr stringlen(inputstring);
      
-//      //calling member function
-//     int length = stringlen.findlength();
-//     cout << "Length of the string: " << length << endl;
+     //calling member function
+    int length = stringlen.findlength();
+    cout << "Length of the string: " << length << endl;
 
-//     return 0;
-// }
+    return 0;
+}
 
-// //ques 6
-// class circle{
-//     private:
-//     int radius;
-//     public:
-//     circle(int r){
-//         radius = r;
-//     }
-//     float area(int radius ){
-//         float a = M_PI * pow(radius,2);
-//         return a;
-//     }
+//ques 6
+class circle{
+    private:
+    int radius;
+    public:
+    circle(int r){
+        radius = r;
+    }
+    float area(int radius ){
+        float a = M_PI * pow(radius,2);
+        return a;
+    }
 
-//     float circumference(int radius ){
-//         float c = 2 * M_PI * radius;
-//         return c;
-//     }
-// };
+    float circumference(int radius ){
+        float c = 2 * M_PI * radius;
+        return c;
+    }
+};
 
-// int main(){
-//     int radius1;
-//     cin>>radius1;
-//     circle aandc(radius1);
-//     float a = aandc.area(radius1);
-//     float c = aandc.circumference(radius1);
-//     cout << "area of the circle: " << a << endl;
-//     cout << "circumference of the circle: " << c << endl;
-//     return 0;
-// }
+int main(){
+    int radius1;
+    cin>>radius1;
+    circle aandc(radius1);
+    float a = aandc.area(radius1);
+    float c = aandc.circumference(radius1);
+    cout << "area of the circle: " << a << endl;
+    cout << "circumference of the circle: " << c << endl;
+    return 0;
+}
 
 
 
@@ -174,11 +174,11 @@ int main() {
   Student student("John", "10th", 101, 85.5);
 
 
-// Student student;
-// student.name = "John";
-// student.className = "10th";
-// student.rollNumber = 101;
-// student.marks = 85.5;
+Student student;
+student.setName("John");
+student.className = "10th";
+student.rollNumber = 101;
+student.marks = 85.5;
 
 
     cout << "Student Name: " << student.getName() << endl;

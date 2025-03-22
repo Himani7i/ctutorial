@@ -75,7 +75,7 @@ void bubbleSort(vector<int>& arr, int n)
            
     }
 }
-
+//hw: stable or unstable, inplace sort
 //insertion sort
 #include<vector>
 using namespace std;

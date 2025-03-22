@@ -62,7 +62,7 @@ class Node{
         temp->next= nodetoinsert;
     }
 
-    oid deletenode(int position,Node* &head){
+    void deletenode(int position,Node* &head){
    if(position == 1){
         Node* temp = head;
         head = head -> next;

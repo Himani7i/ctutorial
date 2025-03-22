@@ -13,10 +13,10 @@ class Node{
 
     ~Node(){
         int value = this->data;
-    if(this->next !=NULL){
+        if(this->next !=NULL){
         delete next;
         this->next=NULL;
-          }
+        }
           cout << " memory is free for node with data " << value << endl;
     }
     };
@@ -90,24 +90,57 @@ Node* reverseLinkedList(Node* &head){
 //OR
 //REVERSING USING RECCURSION
 
-void reverse(Node* head, Node* curr, Node* prev){
+ 
+
+void reverse(Node* &head, Node* curr, Node* prev){
     //base case
     if(curr == NULL){
         head = prev;
         return;
     }
-    Node* reverselinklist(Node* head){
-        Node* curr = head;
-        Node* prev = NULL;
-        reverse(head,curr,prev);
-        return head;
-    }
+   // Recursively reverse the rest of the list
     Node* forward = curr->next;
-    reverse(head,curr,prev);
+    reverse(head,forward,curr);
+    // Update the next pointer to reverse the list
     curr->next = prev;
 }
     
-   void deletenode(int position,Node* &head){
+ Node* reverselinklist(Node* head){
+        Node* curr = head;
+        Node* prev = NULL;
+        reverse(head,curr,prev);
+        // Find the new head after reversing
+    while (curr && curr->next) {
+        curr = curr->next;
+    }
+    
+    return curr;
+        
+    }
+
+///////ORRRRRRRRRRRR
+Node* getMiddle(Node* head){
+    if(head ==NULL || head->next == NULL){
+        return head;
+    }
+    //2NODES
+    if(head->next->next==NULL){
+        return head->next;
+    }
+    Node* slow = head;
+    Node* fast = head->next;
+    while(fast!= NULL){
+        fast = fast->next;
+        if(fast!= NULL){
+            fast = fast->next;
+        }
+        slow = slow->next;
+    }
+    return slow;
+}
+
+
+void deletenode(int position,Node* &head){
    if(position == 1){
         Node* temp = head;
         head = head -> next;
@@ -130,7 +163,27 @@ void reverse(Node* head, Node* curr, Node* prev){
    } 
    }
 
-   int getLength(Node* &head){
+//ORRRRRR APPROACH 3 OF CHHOTAHEAD
+// Recursive function to reverse the linked list
+Node* reverse1(Node* head) {
+    // Base case: empty list or list with single node
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    // Recursively reverse the rest of the list
+    Node* chhotahead = reverse1(head->next);
+
+    // Update pointers to reverse the list
+    head->next->next = head;
+    head->next = NULL;
+
+    // Return the new head of the reversed list
+    return chhotahead;
+}
+
+//length
+int getLength(Node* &head){
     int len = 0;
     while( head !=NULL){
         len++;
@@ -139,6 +192,8 @@ void reverse(Node* head, Node* curr, Node* prev){
     return len;
    }
 
+
+//midddleeeeeeee
    Node*findMiddle(Node* &head){
     int len = getLength(head);
     int ans = (len/2);
@@ -152,6 +207,28 @@ void reverse(Node* head, Node* curr, Node* prev){
         
     return temp;
  }
+
+
+ ////optimised solutionnnnnnnn
+ Node * getMiddle(Node* head){
+    if(head == NULL || head->next == NULL)
+    return head;
+    //2 node
+    if(head->next->next == NULL){
+        return head->next;
+    }
+    Node* slow = head;
+    Node* fast = head->next;
+    while(fast!= NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+        }
+        slow = slow ->next;
+    }
+    return slow;
+ }
+
 
  Node* getLastNodeAddress(Node* head) {
     if (head == nullptr) {
@@ -262,19 +339,41 @@ void moveLastToFront(Node* &head) {
 
    void print(Node* &head){
 
-        if(head == NULL){
-        cout << "List is empty "<< endl;
-        return ;
-        }
+        // if(head == NULL){
+        // cout << "List is empty "<< endl;
+        // return ;
+        // }
     
        Node* temp = head;
-    while(temp!=NULL){
+       while(temp!=NULL){
         cout<<temp->data<<"  ";
         temp = temp -> next;
     }
     cout<<endl;
 }
+// int main() {
+//     // Creating a sample linked list
+//     Node* node1 = new Node(1);
+//     Node* node2 = new Node(2);
+//     Node* node3 = new Node(3);
+//     Node* node4 = new Node(4);
+//     node1->next = node2;
+//     node2->next = node3;
+//     node3->next = node4;
 
+//     // Original list
+//     cout << "Original list: ";
+//     print(node1);
+
+//     // Reverse the list
+//     Node* reversedHead = reverselinklist(node1);
+
+//     // Print the reversed list
+//     cout << "Reversed list: ";
+//     print(reversedHead);
+
+//     return 0;
+// }
 int main(){
     Node* node1= new Node(10);
     // cout<<node1->data<<endl;
@@ -290,7 +389,7 @@ int main(){
     print(head);
     insertatHead(head, 15);
     print(head);
-    insertatTail(tail, 12);
+    insertatTail(tail, 69);
     print(head);
     insertatposition(tail, head, 22,1);
     print(head);
@@ -298,16 +397,41 @@ int main(){
     // deletenode(4, head);
     // print(head);
      
-    head = reverseLinkedList(head);
-    print(tail);
-    findMiddle(head);
-    Node* middle = findMiddle(head);
+    // Original list
+    cout << "Original list: ";
+    print(head);
+
+    // // Reverse the list
+    // Node* reversedHead = reverselinklist(head);
+
+    // // Print the reversed list
+    // cout << "Reversed list: ";
+    // print(reversedHead);
+
+    getMiddle(head);
+    Node* middle = getMiddle(head);
     if(middle != NULL)
     cout<<"middle element is:"<<middle->data<<endl;
 
   
 
-    // cout << "head " << head -> data << endl;
-    // cout << "tail " << tail -> data << endl;
+    // // cout << "head " << head -> data << endl;
+    // // cout << "tail " << tail -> data << endl;
     return 0;
 }
+
+Node* floydDetectLoop(Node* &head){
+    if(head=NULL){
+        return NULL;
+    }
+    Node* slow = head;
+    Node* fast = head;
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast)
+            return slow;
+    }
+    return NULL;
+} 

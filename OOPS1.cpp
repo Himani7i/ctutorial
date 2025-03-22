@@ -69,7 +69,7 @@ class Hero {
         strcpy(this->name, name);
     }
 
-    static int random() {
+    static int random() {//static member function
         return timeToComplete ;
     }
 
@@ -80,7 +80,7 @@ class Hero {
 
 };
 
-int Hero::timeToComplete = 5;
+int Hero::timeToComplete = 5;//static data member
 
 int main() {
 
